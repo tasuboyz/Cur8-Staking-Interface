@@ -1,7 +1,21 @@
 :root {
+    /* Tema chiaro (default) */
     --primary: #2b13e3;
     --bg: #f5f5f5;
     --text: #333;
+    --card-bg: white;
+    --border: #ddd;
+    --panel-bg: #f8f9fa;
+}
+
+/* Tema scuro */
+.dark-theme {
+    --primary: #5742ff;
+    --bg: #121212;
+    --text: #f1f1f1;
+    --card-bg: #1e1e1e;
+    --border: #333;
+    --panel-bg: #252525;
 }
 
 body {
@@ -10,38 +24,42 @@ body {
     padding: 20px;
     background: var(--bg);
     color: var(--text);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    background: white;
+    background: var(--card-bg);
     border-radius: 12px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
 }
 
 .login-section {
     padding: 20px;
-    background: #f8f9fa;
+    background: var(--panel-bg);
     border-radius: 8px;
     margin-bottom: 20px;
 }
 
 .delegation-form {
-    background: white;
+    background: var(--card-bg);
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
 }
 
-input {
+input, select {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     border-radius: 5px;
     box-sizing: border-box;
+    background-color: var(--card-bg);
+    color: var(--text);
 }
 
 button {
@@ -85,7 +103,7 @@ button:hover {
 #delegationTable td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border);
 }
 
 .balances {
@@ -173,4 +191,39 @@ canvas#roiChart {
     width: 100%;
     height: 300px;
     margin-top: 20px;
+}
+
+/* Aggiungi gli stili per il toggle del tema */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: rotate(30deg);
+}
+
+/* Assicurati che le tabelle e altri elementi siano coerenti col tema */
+#currentDelegationInfo {
+    margin-bottom: 15px; 
+    padding: 10px; 
+    background: var(--panel-bg); 
+    border-radius: 5px;
+}
+
+/* Assicurare che i testi piccoli e le etichette siano visibili anche nel tema scuro */
+small, label {
+    color: var(--text);
 }

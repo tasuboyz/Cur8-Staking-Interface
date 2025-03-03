@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (document.getElementById('roiTab')) {
         await ROIModule.init();
     }
+
+    // Inizializza il tema
+    initTheme();
 });
 
 // Funzione per impostare gli event listener
@@ -237,5 +240,43 @@ async function updateCurrentDelegationInfo() {
         }
     } catch (error) {
         console.error('Error updating current delegation info:', error);
+    }
+}
+
+// Aggiungi queste funzioni per gestire il tema
+function initTheme() {
+    // Controlla se esiste un tema salvato in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        document.getElementById('themeToggle').innerHTML = '<i class="fas fa-sun"></i>';
+    }
+    
+    // Aggiungi l'event listener per il toggle del tema
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+}
+
+function toggleTheme() {
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    
+    if (body.classList.contains('dark-theme')) {
+        // Passa al tema chiaro
+        body.classList.remove('dark-theme');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        localStorage.setItem('theme', 'light');
+    } else {
+        // Passa al tema scuro
+        body.classList.add('dark-theme');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        localStorage.setItem('theme', 'dark');
+    }
+    
+    // Se il grafico ROI è visibile, aggiornalo per riflettere il nuovo tema
+    if (typeof ROIModule !== 'undefined' && document.getElementById('roiTab').classList.contains('active')) {
+        ROIModule.refreshChart();
     }
 }

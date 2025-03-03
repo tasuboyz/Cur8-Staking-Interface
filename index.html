@@ -13,6 +13,10 @@
     <script src="app.js" type="module"></script>
 </head>
 <body>
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    
     <div class="container">
         <h1>Delegate to Cur8</h1>
         
@@ -88,7 +92,7 @@
             <h2>Statistiche ROI</h2>
             <div id="inputSection">
                 <label for="investmentType">Tipo di investimento:</label>
-                <select id="investmentType" onchange="toggleInvestmentInput()">
+                <select id="investmentType">
                     <option value="sp" selected>SP esistente</option>
                     <option value="usd">USD</option>
                 </select>

@@ -6,6 +6,7 @@ const ROIModule = {
     steemData: null,
     hiveData: null,
     priceData: null,
+    monthlyData: null,
     
     /**
      * Inizializza il modulo ROI
@@ -171,6 +172,8 @@ const ROIModule = {
      * Aggiorna il grafico ROI con i dati calcolati
      */
     updateROIChart(monthlyData) {
+        this.monthlyData = monthlyData; // Salva i dati per refresh
+        
         const canvas = document.getElementById('roiChart');
         if (!canvas) return;
         
@@ -181,8 +184,8 @@ const ROIModule = {
         }
         
         // Ottieni il colore del testo in base al tema
-        const currentTheme = localStorage.getItem("theme") || "light";
-        const textColor = currentTheme === "light" ? "#1a202c" : "#f7fafc";
+        const isDarkTheme = document.body.classList.contains('dark-theme');
+        const textColor = isDarkTheme ? '#f1f1f1' : '#333333';
         
         this.roiChart = new Chart(ctx, {
             type: 'line',
@@ -254,6 +257,15 @@ const ROIModule = {
                 }
             }
         });
+    },
+    
+    /**
+     * Aggiungi un metodo per aggiornare il grafico quando cambia il tema
+     */
+    refreshChart() {
+        if (this.monthlyData && this.monthlyData.length > 0) {
+            this.updateROIChart(this.monthlyData);
+        }
     }
 };
 
