@@ -1,0 +1,176 @@
+:root {
+    --primary: #2b13e3;
+    --bg: #f5f5f5;
+    --text: #333;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.login-section {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.delegation-form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.message {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.success {
+    background: #4cd137;
+    color: white;
+}
+
+.error {
+    background: #e84118;
+    color: white;
+}
+
+#delegationTable {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+#delegationTable th,
+#delegationTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.balances {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.balance-card {
+    background: linear-gradient(135deg, var(--primary), #4834d4);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.balance-card:hover {
+    transform: translateY(-5px);
+}
+
+.balance-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+}
+
+.balance-card div {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Stili per la navigazione a schede */
+.navigation-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--text);
+    width: auto;
+}
+
+.tab-button.active {
+    border-bottom: 3px solid var(--primary);
+    color: var(--primary);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Stili per la visualizzazione dei dati */
+.data-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.data-item {
+    background: linear-gradient(135deg, var(--primary), #4834d4);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.data-item h3 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+}
+
+canvas#roiChart {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
